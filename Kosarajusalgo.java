@@ -1,15 +1,12 @@
-//Java implementation of Kosaraju's algorithm to print all SCCs
-import java.io.*;
-import java.util.*;
-import java.util.LinkedList;
-
 public class Kosarajusalgo {
-	static int V = 5; // No. of vertices
+	// No. of vertices
+
+	static int V = 5;
+
+	// Adjacency List
 	static int Graph[][] = new int[V + 1][V + 1];
 	static int Graphrev[][] = new int[V + 1][V + 1];
-	// Adjacency List
 
-	// Constructor
 	static int top = -1;
 
 	static boolean printed[] = new boolean[V + 1];
@@ -17,7 +14,6 @@ public class Kosarajusalgo {
 	static int verticescopy[][] = new int[V][2];
 	static int totalNoOfEdges = 0;
 
-	// Function to add an edge into the graph
 	static void addEdge(int v, int w) {
 
 		v++;
@@ -51,7 +47,7 @@ public class Kosarajusalgo {
 	}
 
 	private static void dfsutilprint(int popedele) {
-		// TODO Auto-generated method stub
+
 		if (!printed[popedele]) {
 
 			System.out.print(popedele);
@@ -70,7 +66,7 @@ public class Kosarajusalgo {
 	}
 
 	private static void invertGraph() {
-		// TODO Auto-generated method stub
+
 		for (int i = 0; i < totalNoOfEdges; i++) {
 
 			Graphrev[verticescopy[i][1]][0]++;
@@ -82,7 +78,6 @@ public class Kosarajusalgo {
 	}
 
 	private static void dfs(int[] stacks) {
-		// TODO Auto-generated method stub
 
 		boolean visited[] = new boolean[V + 1];
 
@@ -97,7 +92,6 @@ public class Kosarajusalgo {
 	}
 
 	private static void dfsutil(boolean[] visited, int source, int[] stacks) {
-		// TODO Auto-generated method stub
 
 		visited[source] = true;
 
@@ -115,10 +109,9 @@ public class Kosarajusalgo {
 
 	}
 
-	// Driver method
+	
 	public static void main(String args[]) {
-		// Create a graph given in the above diagram
-
+		
 		addEdge(1, 0);
 		addEdge(0, 2);
 		addEdge(2, 1);
