@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Kosarajusalgo {
 	// No. of vertices
 
@@ -40,26 +42,22 @@ public class Kosarajusalgo {
 		while (top != -1) {
 			// pop
 			int popedele = stack[top--];
-
-			dfsutilprint(popedele);
+			if (!printed[popedele])
+				dfsutilprint(popedele);
 			System.out.println();
 		}
 	}
 
 	private static void dfsutilprint(int popedele) {
 
-		if (!printed[popedele]) {
+		System.out.print(popedele - 1 + "\t");
+		printed[popedele] = true;
 
-			System.out.print(popedele);
-			printed[popedele] = true;
+		for (int i = 1; i <= Graphrev[popedele][0]; i++) {
 
-			for (int i = 1; i <= Graphrev[popedele][0]; i++) {
+			if (Graphrev[popedele][i] > 0 && !printed[Graphrev[popedele][i]]) {
+				dfsutilprint(Graphrev[popedele][i]);
 
-				if (Graphrev[popedele][i] > 0
-						&& !printed[Graphrev[popedele][i]]) {
-					dfsutilprint(Graphrev[popedele][i]);
-
-				}
 			}
 		}
 
@@ -111,15 +109,15 @@ public class Kosarajusalgo {
 
 	
 	public static void main(String args[]) {
-		
+	
+
 		addEdge(1, 0);
 		addEdge(0, 2);
 		addEdge(2, 1);
 		addEdge(0, 3);
 		addEdge(3, 4);
 
-		System.out.println("Following are strongly connected components "
-				+ "in given graph ");
+		System.out.println("Following are strongly connected components ");
 		printStronglyConnectedComponentss();
 	}
 }
