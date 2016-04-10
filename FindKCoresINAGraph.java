@@ -4,7 +4,6 @@ public class FindKCoresINAGraph {
 	static int V = 9;
 	static int Graph[][] = new int[V + 1][V + 1];
 
-	static int top = -1;
 
 	static int k = 3;
 
